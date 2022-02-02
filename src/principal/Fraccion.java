@@ -11,26 +11,61 @@ public class Fraccion {
     }
 
 
-    public Fraccion(int numerador, int denominador){
 
-            this.numerador=numerador;
-            this.denominador=denominador;
+
+    // Instancio el objeto de resultado dentro, luego de hacer
+
+    public void multiplicar(Fraccion fraccion1, Fraccion fraccion2) {
+
+        String operacion = "multiplicación";
+        Fraccion resultado = new Fraccion();
+
+
+        resultado.setNumerador(fraccion1.getNumerador() * fraccion2.getNumerador());
+        resultado.setDenominador(fraccion1.getDenominador() * fraccion2.getDenominador());
+
+
+        if (resultado.getNumerador() % Math.min(resultado.getNumerador(), resultado.getDenominador()) == 0 &&
+                resultado.getDenominador() % Math.min(resultado.getNumerador(), resultado.getDenominador()) == 0) {
+
+            resultado.setNumerador(resultado.getNumerador() / Math.min(resultado.getNumerador(), resultado.getDenominador()));
+            resultado.setDenominador(resultado.getDenominador() / Math.min(resultado.getNumerador(), resultado.getDenominador()));
+
+            System.out.println(mostrarResultado(resultado, operacion));
+
+        }
+    }
+
+    public void dividir(Fraccion fraccion1, Fraccion fraccion2){
+
+        String operacion="división";
+        Fraccion resultado = new Fraccion();
+
+        resultado.setNumerador(fraccion1.getNumerador() * fraccion2.getDenominador());
+        resultado.setDenominador(fraccion1.getDenominador() * fraccion2.getNumerador());
+
+        if (resultado.getNumerador() % Math.min(resultado.getNumerador(), resultado.getDenominador()) == 0 &&
+                resultado.getDenominador() % Math.min(resultado.getNumerador(), resultado.getDenominador()) == 0) {
+
+            resultado.setNumerador(resultado.getNumerador() / Math.min(resultado.getNumerador(), resultado.getDenominador()));
+            resultado.setDenominador(resultado.getDenominador() / Math.min(resultado.getNumerador(), resultado.getDenominador()));
+
+            System.out.println(mostrarResultado(resultado, operacion));
 
         }
 
+    }
 
 
-    public Object  multiplicar(Fraccion fraccion1, Fraccion fraccion2){
 
 
-            Fraccion resultado = new Fraccion();
+    public String mostrarResultado(Fraccion resultado, String operacion){
 
-            resultado.setNumerador(fraccion1.getNumerador() * fraccion2.getNumerador());
-            resultado.setDenominador(fraccion1.getDenominador() * fraccion2.getDenominador());
+           return  "El resultado de la " + operacion + " es: "  + resultado.getNumerador() + "  y "  + resultado.getDenominador();
+    }
 
-            return resultado;
 
-       }
+
 
 
     public int getNumerador() {
@@ -53,15 +88,5 @@ public class Fraccion {
                 this.denominador = denominador;
             }
     }
-    public String toString(){
-
-        return " El resultado es:  " + getNumerador() + "  y " + getDenominador();
-    }
-
-
-
-
-
-
 
 }
